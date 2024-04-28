@@ -52,7 +52,7 @@ class _HomePageContentState extends State<HomePageContent> {
       appBar: AppBar(
         iconTheme: new IconThemeData(color: Colors.white),
         elevation: 0.0,
-        title: Text("Home", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 30.0),),
+        title: const Text("Home", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 30.0),),
       ),
       drawer: createDrawer(),
       body: SingleChildScrollView(
@@ -65,23 +65,23 @@ class _HomePageContentState extends State<HomePageContent> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
             createSearchBar(),
-            SizedBox(height: 10.0,),
+            const SizedBox(height: 10.0,),
             createbanner(),
-            SizedBox(height: 10.0,),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal:18.0,vertical: 5.0),
+            const SizedBox(height: 10.0,),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal:18.0,vertical: 5.0),
               child: Text("Recently Added",style: TextStyle(color: Colors.orange,fontSize: 30.0,fontWeight: FontWeight.bold,),),
             ),
             createListRecntlyAdd(), 
-            SizedBox(height: 10.0,),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal:18.0),
+            const SizedBox(height: 10.0,),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal:18.0),
               child: Text("Food Category",style: TextStyle(color: Colors.orange,fontSize: 30.0,fontWeight: FontWeight.bold,),),
             ),
             createFoodCategory(),
             createPopularFoodList(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal:18.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal:18.0),
               child: Text("For You",style: TextStyle(color: Colors.black45,fontSize: 20.0,fontWeight: FontWeight.bold,),),
             ),
             createForYou(),
@@ -96,9 +96,9 @@ class _HomePageContentState extends State<HomePageContent> {
     final List<Widget> imageSliders = homePageBloc.bannerFoodList.map((item) => GestureDetector(
     onTap: ()=> Navigator.push(context, MaterialPageRoute(builder:(context)=>FoodDetailPage(food:item))),
     child: Container(
-      margin: EdgeInsets.all(5.0),
+      margin: const EdgeInsets.all(5.0),
       child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        borderRadius: const BorderRadius.all(Radius.circular(10.0)),
         child: Stack(
           children: <Widget>[
             Image.network(item.image, fit: BoxFit.cover, width: 1000.0),
@@ -107,7 +107,7 @@ class _HomePageContentState extends State<HomePageContent> {
               left: 0.0,
               right: 0.0,
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
                       Color.fromARGB(200, 0, 0, 0),
@@ -117,10 +117,10 @@ class _HomePageContentState extends State<HomePageContent> {
                     end: Alignment.topCenter,
                   ),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                 child: Text(
                   '${item.name}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
@@ -155,48 +155,48 @@ class _HomePageContentState extends State<HomePageContent> {
   createDrawer(){
     return Drawer(
       child: ListView(
-        padding: EdgeInsets.all(0.0),
+        padding: const EdgeInsets.all(0.0),
         children: <Widget>[
           DrawerHeader(
-            child: UserAccountsDrawerHeader(
-              decoration: BoxDecoration(color: Colors.white,),
-              accountName:Text("") ,
-              accountEmail: Text(homePageBloc.mFirebaseUser?.email?? ""),
-                currentAccountPicture: CircleAvatar(backgroundImage: NetworkImage("https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/eggs-breakfast-avocado-1296x728-header.jpg?w=1155&h=1528")),
-              ),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.rectangle,
               color: Colors.transparent,
             ),
+            child: UserAccountsDrawerHeader(
+              decoration: const BoxDecoration(color: Colors.white,),
+              accountName:const Text("") ,
+              accountEmail: Text(homePageBloc.mFirebaseUser.email?? ""),
+                currentAccountPicture: const CircleAvatar(backgroundImage: NetworkImage("https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/eggs-breakfast-avocado-1296x728-header.jpg?w=1155&h=1528")),
+              ),
           ),
           ListTile(
-            trailing: Icon(Icons.arrow_forward_ios,),
-            leading: Icon(Icons.home,color: Colors.orangeAccent,),
-            title: Text('Home',),
+            trailing: const Icon(Icons.arrow_forward_ios,),
+            leading: const Icon(Icons.home,color: Colors.orangeAccent,),
+            title: const Text('Home',),
             onTap: () {
               Navigator.pop(context);
             },
           ),
           ListTile(
-            trailing: Icon(Icons.arrow_forward_ios,),
-            leading: Icon(Icons.shopping_basket,color: Colors.orangeAccent,),
-            title: Text('Cart'),
+            trailing: const Icon(Icons.arrow_forward_ios,),
+            leading: const Icon(Icons.shopping_basket,color: Colors.orangeAccent,),
+            title: const Text('Cart'),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>CartPage()));
             },
           ),
           ListTile(
-            trailing: Icon(Icons.arrow_forward_ios,),
-            leading: Icon(Icons.fastfood,color: Colors.orangeAccent,),
-            title: Text('My Order'),
+            trailing: const Icon(Icons.arrow_forward_ios,),
+            leading: const Icon(Icons.fastfood,color: Colors.orangeAccent,),
+            title: const Text('My Order'),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>MyOrderPage()));
             },
           ),
           ListTile(
-            trailing: Icon(Icons.arrow_forward_ios,),
-            leading: Icon(Icons.clear,color: Colors.orangeAccent,),
-            title: Text('Logout'),
+            trailing: const Icon(Icons.arrow_forward_ios,),
+            leading: const Icon(Icons.clear,color: Colors.orangeAccent,),
+            title: const Text('Logout'),
             onTap: () async {
               final AuthMethods _authMethods = AuthMethods();
               await _authMethods.logout();
@@ -209,18 +209,18 @@ class _HomePageContentState extends State<HomePageContent> {
 
   createPopularFoodList(){
     return Container(
-      padding: EdgeInsets.all(0.0),
+      padding: const EdgeInsets.all(0.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left:18.0),
+          const Padding(
+            padding: EdgeInsets.only(left:18.0),
             child: Text("Popular Food ",style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold,color: Colors.black45),),
           ),
-          SizedBox(height: 10.0,),
+          const SizedBox(height: 10.0,),
           Container(
             height: 200.0,
-            child: homePageBloc.popularFoodList.length==-1 ? Center(child: Center(child: CircularProgressIndicator()))
+            child: homePageBloc.popularFoodList.length==-1 ? const Center(child: Center(child: CircularProgressIndicator()))
                 : ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: homePageBloc.popularFoodList.length,
@@ -243,7 +243,7 @@ class _HomePageContentState extends State<HomePageContent> {
         children: <Widget>[
           // Replace this container with your Map widget
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.orange,
               borderRadius: BorderRadius.only(
                 bottomRight:Radius.circular(20.0),
@@ -258,20 +258,20 @@ class _HomePageContentState extends State<HomePageContent> {
             child: GestureDetector(
               onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchPage())),
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(10.0))
                 ),
-                child: Row(
+                child: const Row(
                   children: <Widget>[
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left:18.0),
+                        padding: EdgeInsets.only(left:18.0),
                         child: Text("Search",style: TextStyle(color: Colors.black45),),
                       )
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
+                      padding: EdgeInsets.only(right: 8.0),
                       child: IconButton(icon: Icon(Icons.search,color: Colors.orange,), onPressed: null)
                     ),
                   ],
@@ -290,15 +290,15 @@ class _HomePageContentState extends State<HomePageContent> {
 
   createListRecntlyAdd(){
     return Container(
-      padding: EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(20.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          GestureDetector( onTap: ()=>gotoCateogry(homePageBloc.recentlyCategory), child: CircleAvatar(radius: 35.0,backgroundImage: NetworkImage("https://www.pngitem.com/pimgs/m/398-3981213_how-to-draw-burger-burger-drawing-easy-hd.png",scale: 60.0),)),
-          GestureDetector( onTap: ()=>gotoCateogry(homePageBloc.recentlyCategory2),child: CircleAvatar(radius: 35.0,backgroundImage: NetworkImage("https://img.favpng.com/19/11/2/pizza-clip-art-vector-graphics-pepperoni-illustration-png-favpng-Mf177mM20Db6kFJa1SmMpQN5R.jpg",scale: 60.0),)),
-          GestureDetector( onTap: ()=>gotoCateogry(homePageBloc.recentlyCategory3),child: CircleAvatar(radius: 35.0,backgroundImage: NetworkImage("https://www.vippng.com/png/detail/133-1337804_french-fry-png-mcdonalds-french-fries-drawing.png",scale: 60.0),)),
-          GestureDetector( onTap: ()=>gotoCateogry(homePageBloc.recentlyCategory4),child: CircleAvatar(radius: 35.0,backgroundImage: NetworkImage("https://www.kindpng.com/picc/m/488-4883349_png-download-png-download-kfc-chicken-bowl-easy.png",scale: 60.0),)),
+          GestureDetector( onTap: ()=>gotoCateogry(homePageBloc.recentlyCategory), child: const CircleAvatar(radius: 35.0,backgroundImage: NetworkImage("https://www.pngitem.com/pimgs/m/398-3981213_how-to-draw-burger-burger-drawing-easy-hd.png",scale: 60.0),)),
+          GestureDetector( onTap: ()=>gotoCateogry(homePageBloc.recentlyCategory2),child: const CircleAvatar(radius: 35.0,backgroundImage: NetworkImage("https://img.favpng.com/19/11/2/pizza-clip-art-vector-graphics-pepperoni-illustration-png-favpng-Mf177mM20Db6kFJa1SmMpQN5R.jpg",scale: 60.0),)),
+          GestureDetector( onTap: ()=>gotoCateogry(homePageBloc.recentlyCategory3),child: const CircleAvatar(radius: 35.0,backgroundImage: NetworkImage("https://www.vippng.com/png/detail/133-1337804_french-fry-png-mcdonalds-french-fries-drawing.png",scale: 60.0),)),
+          GestureDetector( onTap: ()=>gotoCateogry(homePageBloc.recentlyCategory4),child: const CircleAvatar(radius: 35.0,backgroundImage: NetworkImage("https://www.kindpng.com/picc/m/488-4883349_png-download-png-download-kfc-chicken-bowl-easy.png",scale: 60.0),)),
         ],
       ),
     );
@@ -306,9 +306,9 @@ class _HomePageContentState extends State<HomePageContent> {
 
   createFoodCategory(){
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 20.0),
+      margin: const EdgeInsets.symmetric(vertical: 20.0),
       height: 300.0,
-      child: homePageBloc.categoryList.length==0 ? Center(child: CircularProgressIndicator())
+      child: homePageBloc.categoryList.length==0 ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
         scrollDirection: Axis.horizontal,
           itemCount: homePageBloc.categoryList.length,
@@ -324,8 +324,8 @@ class _HomePageContentState extends State<HomePageContent> {
   createForYou(){
     return Container(
       height:MediaQuery.of(context).size.height*0.5,
-      margin: EdgeInsets.symmetric(vertical: 20.0),
-      child: homePageBloc.foodList.length==0 ? Center(child: CircularProgressIndicator())
+      margin: const EdgeInsets.symmetric(vertical: 20.0),
+      child: homePageBloc.foodList.length==0 ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
           itemCount: homePageBloc.foodList.length,
           itemBuilder: (_,index){

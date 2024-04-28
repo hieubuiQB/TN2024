@@ -7,6 +7,8 @@ import 'package:doantotnghiep/models/Request.dart';
 import 'package:doantotnghiep/resourese/auth_methods.dart';
 import 'package:doantotnghiep/resourese/databaseSQL.dart';
 
+import '../models/User.dart';
+
 class FirebaseHelper{
 
   // Firebase Database, will use to get reference.
@@ -54,7 +56,7 @@ class FirebaseHelper{
 
     // Trích xuất dữ liệu từ snapshot và xử lý
     var snapshot = event.snapshot;
-    var data = snapshot.value as Map<dynamic, dynamic>;
+    final data = snapshot.value as Map<dynamic, dynamic>;
     if (data != null) { // Kiểm tra xem data có phải là null hay không
       var keys = data.keys;
       foodList.clear();
@@ -118,7 +120,7 @@ class FirebaseHelper{
 
 
 
-  Future<List<Request>> fetchOrders(User currentUser) async {
+  Future<List<Request>> fetchOrders(UserModel currentUser) async {
     List<Request> requestList = [];
     DatabaseReference foodReference = _ordersReference.child(currentUser.uid);
 

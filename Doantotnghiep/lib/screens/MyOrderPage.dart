@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -7,6 +6,8 @@ import 'package:doantotnghiep/resourese/auth_methods.dart';
 import 'package:doantotnghiep/resourese/firebase_helper.dart';
 import 'package:doantotnghiep/utils/universal_variables.dart';
 import 'package:doantotnghiep/widgets/orderwidget.dart';
+
+import '../models/User.dart';
 
 class MyOrderPage extends StatefulWidget {
   @override
@@ -17,12 +18,12 @@ class _MyOrderPageState extends State<MyOrderPage> {
   List<Request> requestList = [];
   AuthMethods authMethods = AuthMethods();
   FirebaseHelper mFirebaseHelper = FirebaseHelper();
-  User? currentUser; // Khởi tạo với giá trị null
+  UserModel? currentUser; // Khởi tạo với giá trị null
 
   @override
   void initState() {
     super.initState();
-    SchedulerBinding.instance!.addPostFrameCallback((timeStamp) async {
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
       currentUser = await authMethods.getCurrentUser();
       mFirebaseHelper.fetchOrders(currentUser!).then((List<Request> list) {
         // there are not much sync operation in myorder page, i.e. didn't made any bloc file :)

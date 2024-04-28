@@ -34,13 +34,13 @@
 // }
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 
-class User {
+class UserModel {
   final String uid;
   final String? email; // Make email nullable
   final String phone;
   final String password;
 
-  User({
+  UserModel({
     required this.uid,
     this.email,
     required this.phone,
@@ -48,12 +48,12 @@ class User {
   });
 
   // Method to convert FirebaseUser to User
-  static User fromFirebaseUser(auth.User? user) {
+  static UserModel fromFirebaseUser(auth.User? user) {
     if (user == null) {
       throw ArgumentError("User cannot be null");
     }
 
-    return User(
+    return UserModel(
       uid: user.uid,
       email: user.email,
       phone: '', // You might want to handle phone differently

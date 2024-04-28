@@ -1,10 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:doantotnghiep/resourese/auth_methods.dart';
 import 'package:doantotnghiep/screens/homepage.dart';
 import 'package:doantotnghiep/screens/loginpages/login.dart';
 
-
+import 'models/User.dart';
 void main() {
   runApp(MyApp());
 }
@@ -27,9 +26,9 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.orange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: StreamBuilder<User>(
+      home: StreamBuilder<UserModel>(
         stream: _authMethods.onAuthStateChanged,
-        builder: (context, AsyncSnapshot<User> snapshot) {
+        builder: (context, AsyncSnapshot<UserModel> snapshot) {
           if (snapshot.hasData) {
             return HomePage();
           } else {
